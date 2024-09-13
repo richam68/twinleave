@@ -59,7 +59,6 @@ const loginUser = catchAsync(async (req, res) => {
 
 const cart = catchAsync(async(req, res) => {
     const { productId, quantity } = req.body;
-
     try {
         const user = await AuthService.findById(req.user);
         const existingItem = user.cart.find(item => item.productId === productId);
@@ -76,7 +75,7 @@ const cart = catchAsync(async(req, res) => {
         res.status(400).json({ error: error.message });
     }
 })
-
+//get cart
 const viewCart = catchAsync(async (req, res) => {
     try {
         const user = await AuthService.findById(req.user);
